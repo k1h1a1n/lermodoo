@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='entry_action' model='ir.actions.act_window'>
+        <field name="name">Entry</field>
+        <field name="res_model">lerm.entry</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id='product_action' model='ir.actions.act_window'>
+        <field name="name">Product</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="LERM" id="lerm_base_menu" />
+    <menuitem name="Lab" id="lab_menu" parent="lerm_base_menu" />
+    <menuitem name="Entry" id="entry_menu_id" parent="lab_menu" action="entry_action" />
+    <menuitem name="Configuration" id="conf_menu" parent="lerm_base_menu" />
+    <menuitem name="Product" id="product_menu" parent="conf_menu" action="product_action" />
+    <record id="entry_view_form" model="ir.ui.view">
+        <field name="name">Entry Details</field>
+        <field name="model">lerm.entry</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="number"/>
+                        <field name="date"/>
+                        <field name="parties"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Contacts">
+                            <field name="invoice_Parties" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="invoice_party"/>
+                                </tree>
+                            </field>
+                            <field name="report_parties" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="report_party"/>
+                                </tree>
+                            </field>
+                            <field name="acknowledgement_party" widget="one2many_list">
+                                <tree editable="bottom">
+                                    <field name="ack_party" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
