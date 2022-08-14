@@ -6,9 +6,16 @@ class Lab(models.Model):
     number = fields.Char("Number", required=True)
     date = fields.Date(string="Date", default=fields.Date.today)
     parties = fields.Many2one("res.partner", string="Parties", required=True)
+    # picking_type = fields.Many2one("stock.picking.type",string="Picking Type")
+    supplier_location = fields.Many2one("stock.location", string="Supplier Location", required=True)
+    internal_location = fields.Many2one("stock.location", string="Internal Location", required=True)
+    product = fields.Many2one("product.template",string="Product")
+    uom = fields.Many2one("uom.uom",string="UoM")
     invoice_Parties = fields.One2many(
         "invoiceparty.details", "entry_id", string="Invoice Party", required=True
     )
+
+    samples = fields.One2many("lerm.sample", "entry_id", string="Samples")
     report_parties = fields.One2many(
         "reportparty.details", "entry_id", string="Report Party", required=True
     )
@@ -18,6 +25,30 @@ class Lab(models.Model):
         string="Acknowledgement Party",
         required=True,
     )
+    
+    state = fields.Selection([('draft', 'Draft'),('confirmed','confirmed')],default="draft",string="State")
+
+    def button_confirm(self):
+        move1 = self.env['stock.move'].create({
+            'name': 'test_in_1',
+            'location_id': self.supplier_location.id,
+            'location_dest_id': self.internal_location.id,
+            'product_id': self.product.id,
+            'product_uom': self.uom.id,
+            'product_uom_qty': 100.0,
+            'state':'draft'
+        })
+        
+        # self.assertEqual(move1.state, 'draft')
+        move1._action_confirm()
+        move_line = move1.move_line_ids[0]
+        move_line.qty_done = 100.0
+        move1._action_done()
+        self.write({'state': 'confirmed' })
+
+
+
+    
 
 
 class InvoiceParty(models.Model):
@@ -45,4 +76,4 @@ class AcknowledgementParty(models.Model):
 
 class ProductInheritedModel(models.Model):
     _inherit = "product.template"
-    type = fields.Selection(selection=[("sample", "Sample"),("consu", "Consumable"),("service", "Service")])
+    type = fields.Selection(selection=[("sample", "Sample"),("consu", "Consumable"),("service", "Service"),("product", "Storable Product")])

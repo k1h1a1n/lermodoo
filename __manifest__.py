@@ -4,6 +4,6 @@
  'website': "http://www.esehat.org", 
  'category': 'Uncategorized', 
  'version': '13.0.1', 
- 'depends':['base' , 'contacts' , 'product'],
- 'data': ['views/lab.xml']
+ 'depends':['base' , 'contacts' , 'product', 'stock'],
+ 'data': ['views/lab.xml','views/lab_sample.xml','data/data.xml',]
 }

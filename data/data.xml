@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<odoo> 
+    <data>
+        <record id="client_location" model="stock.location">
+            <field name="name">Client</field>
+            <field name="usage">supplier</field>
+        </record>
+    </data>
+    <data>
+        <record id="lab_sample_location" model="stock.location">
+            <field name="name">Labs Location</field>
+            <field name="usage">internal</field>
+        </record>
+    </data>
+    <!-- <data>
+        <record id="lab_picking_type" model="stock.picking.type">
+            <field name="name">Sample Reciept</field>
+            <field name="code">incoming</field>
+            <field name="sequence_code">SR</field>
+        </record>
+    </data> -->
+
+</odoo>
