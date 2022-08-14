@@ -20,13 +20,32 @@
         <field name="model">lerm.entry</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="button_confirm" type="object" states="draft" confirm="Are you sure you want to confirm this Proforma Invoice" string="Confirm" id="draft_confirm"/>
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group>
                         <field name="number"/>
                         <field name="date"/>
                         <field name="parties"/>
+                        <field name="supplier_location"/>
+                        <field name="internal_location"/>
+                        <field name="product"/>
+                        <field name="uom"/>
                     </group>
                     <notebook colspan="4">
+                     <page string="Samples">
+                            <field name="samples" widget="one2many_list">
+                                <tree >
+                                    <field name="entry_id"/>
+                                    <field name="sample_no"/>
+                                    <field name="product"/> 
+                                    <field name="qty"/>
+                                    
+                                </tree>
+                            </field>
+                     </page>
                         <page string="Contacts">
                             <field name="invoice_Parties" widget="one2many_list">
                                 <tree editable="bottom">
@@ -49,4 +68,17 @@
             </form>
         </field>
     </record>
+
+    <record id="entry_view_tree" model="ir.ui.view"> 
+        <field name="name"></field> 
+            <field name="model">lerm.entry</field> 
+            <field name="arch" type="xml"> 
+            <tree>
+                <field name="number"/>
+                <field name="date"/>
+                <field name="parties"/>
+            </tree> 
+        </field> 
+    </record>
+
 </odoo>

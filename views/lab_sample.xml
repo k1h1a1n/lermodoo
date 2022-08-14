@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='sample_action' model='ir.actions.act_window'>
+        <field name="name">Sample</field>
+        <field name="res_model">lerm.sample</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem name="Sample" id="sample_menu_id" parent="lab_menu" action="sample_action" />
+    
+    <record id="sample_view_form" model="ir.ui.view">
+        <field name="name">Sample Details</field>
+        <field name="model">lerm.sample</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group style="width:50%;">
+                        <field name="entry_id"/>
+                        <field name="sample_no"/>
+                        <field name="product"/> 
+                        <field name="qty"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sample_view_tree" model="ir.ui.view"> 
+        <field name="name">Samples</field> 
+            <field name="model">lerm.sample</field> 
+            <field name="arch" type="xml"> 
+            <tree>
+                <field name="sample_no"/> 
+            </tree> 
+        </field> 
+    </record>
+
+    <record id="client_sample_location" model="stock.location">
+        <field name="name">Client</field>
+        <field name="location_id" ref="stock.stock_location_locations_virtual"/>
+        <field name="usage">inventory</field>
+        <field name="company_id"></field>
+    </record>
+</odoo>
