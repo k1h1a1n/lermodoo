@@ -5,5 +5,5 @@
  'category': 'Uncategorized', 
  'version': '13.0.1', 
  'depends':['base' , 'contacts' , 'product'],
- 'data': ['views/lab.xml']
+ 'data': ['views/lab.xml' , 'views/test_sample.xml' , 'views/test_parameter.xml']
 }

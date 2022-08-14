@@ -10,7 +10,7 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem name="LERM" id="lerm_base_menu" />
+    <menuitem name="LERM" id="lerm_base_menu"/>
     <menuitem name="Lab" id="lab_menu" parent="lerm_base_menu" />
     <menuitem name="Entry" id="entry_menu_id" parent="lab_menu" action="entry_action" />
     <menuitem name="Configuration" id="conf_menu" parent="lerm_base_menu" />

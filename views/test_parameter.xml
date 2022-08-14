@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='testparameter_action' model='ir.actions.act_window'>
+        <field name="name">Test Parameters</field>
+        <field name="res_model">lerm.testparameter</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Test Parameter" id="test_parameter" parent="conf_menu" action="testparameter_action" />
+</odoo>

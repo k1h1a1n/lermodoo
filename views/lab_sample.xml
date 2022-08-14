@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <menuitem name="Test" id="entry_menu_id" parent="lab_menu" action="entry_action" />
-</odoo>
