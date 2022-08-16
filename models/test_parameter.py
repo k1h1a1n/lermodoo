@@ -1,12 +1,11 @@
 
 from odoo import models, fields
 
-class LabSample(models.Model):
+class TestParameter(models.Model):
     _name = "lerm.testparameter"
-
-    entry_id = fields.Many2one("lerm.entry",strings="Entry")
-    sample_no = fields.Char("Sample No.")
-    product = fields.Many2one("product.template",domain=[('type','=','sample')],strings="Sample")
-    qty = fields.Integer("Qty")
-    state = fields.Selection([('draft', 'Draft'),('confirmed','confirmed')],default="draft",string="State")
-
+    _rec_name = 'name'
+    group_id = fields.Many2one("lerm.testgroup",strings="Test Group")
+    name = fields.Char(string="Parameter")
+    min = fields.Integer("Min")
+    max = fields.Integer("Max")
+    method = fields.Many2one('lerm.method',string="Method")

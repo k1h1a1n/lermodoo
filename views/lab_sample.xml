@@ -19,6 +19,16 @@
                         <field name="sample_no"/>
                         <field name="product"/> 
                         <field name="qty"/>
+                        <field name="groups" widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="group"/>
+                            </tree>
+                        </field>
+                         <field name="parameters" widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="parameter"/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>

@@ -70,7 +70,7 @@
     </record>
 
     <record id="entry_view_tree" model="ir.ui.view"> 
-        <field name="name"></field> 
+        <field name="name">Entry</field> 
             <field name="model">lerm.entry</field> 
             <field name="arch" type="xml"> 
             <tree>

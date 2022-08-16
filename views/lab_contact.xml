@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="view_exim_contact" model="ir.ui.view">
+        <field name="name">res.partner.lerm</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//field[@name='vat']" position="after">
+                <field name="prefix"/>
+                <field name="suffix"/>
+            </xpath> -->
+            <xpath expr="//notebook//page[@name='internal_notes']" position="after">
+                <page string="LERM">
+                    <group style="width:50%;">
+                        <field name="is_technician"/>
+                        <field name="is_technical_manager"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

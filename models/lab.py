@@ -3,6 +3,7 @@ from odoo import models, fields
 
 class Lab(models.Model):
     _name = "lerm.entry"
+    _rec_name = "number"
     number = fields.Char("Number", required=True)
     date = fields.Date(string="Date", default=fields.Date.today)
     parties = fields.Many2one("res.partner", string="Parties", required=True)
@@ -29,21 +30,34 @@ class Lab(models.Model):
     state = fields.Selection([('draft', 'Draft'),('confirmed','confirmed')],default="draft",string="State")
 
     def button_confirm(self):
-        move1 = self.env['stock.move'].create({
-            'name': 'test_in_1',
-            'location_id': self.supplier_location.id,
-            'location_dest_id': self.internal_location.id,
-            'product_id': self.product.id,
-            'product_uom': self.uom.id,
-            'product_uom_qty': 100.0,
-            'state':'draft'
-        })
+        for entry in self:
+            for sample in entry.samples:
+                move1 = self.env['stock.move'].create({
+                            'name': 'test_in_1',
+                            'location_id': self.supplier_location.id,
+                            'location_dest_id': self.internal_location.id,
+                            'product_id': sample.product.id,
+                            'product_uom': self.uom.id,
+                            'product_uom_qty': sample.qty,
+                            'state':'draft'
+                        })
+                move1._action_confirm()
+                move_line = move1.move_line_ids[0]
+                move_line.qty_done = sample.qty
+                move1._action_done()
+
+                self.env['sample.assignment'].create({
+
+                            'sample_id': sample.id,
+    
+                        })
+            
+
+                
+        
         
         # self.assertEqual(move1.state, 'draft')
-        move1._action_confirm()
-        move_line = move1.move_line_ids[0]
-        move_line.qty_done = 100.0
-        move1._action_done()
+       
         self.write({'state': 'confirmed' })
 
 

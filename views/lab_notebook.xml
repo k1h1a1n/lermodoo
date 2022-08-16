@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id='lab_notebook_action' model='ir.actions.act_window'>
+        <field name="name">Notebook</field>
+        <field name="res_model">lerm.notebook</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="lab_notebook_view_form" model="ir.ui.view">
+        <field name="name">Notebook</field>
+        <field name="model">lerm.notebook</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="button_confirm" type="object" states="draft" confirm="Are you sure you want to Publish this result" string="Confirm" id="draft_confirm_notebook"/>
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group >
+                        <field name="sample"/>
+                        <!-- <field name="methods"/> -->
+                        <field name="result_entry" widget="one2many_list">
+                            <tree editable="bottom">
+                                <field name="parameter"/>
+                                <field name="min"/>
+                                <field name="max"/>
+                                <field name="method"/>
+                                <field name="result"/>
+                            </tree>
+                        </field>
+                      
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="lab_notebook_view_tree" model="ir.ui.view"> 
+        <field name="name">Notebook</field> 
+            <field name="model">lerm.notebook</field> 
+            <field name="arch" type="xml"> 
+            <tree>
+                <field name="sample"/>
+            </tree> 
+        </field> 
+    </record>
+
+    <menuitem name="Notebook" id="lab_notebook_menu" parent="lerm_base_menu" action="lab_notebook_action"/>
+
+
+
+</odoo>
