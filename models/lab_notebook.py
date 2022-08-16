@@ -4,12 +4,16 @@ from odoo import models, fields ,api
 
 class LabNotebook(models.Model):
     _name = "lerm.notebook"
+    _rec_name = "sample"
     sample = fields.Many2one("lerm.sample","Sample")
     result_entry = fields.One2many("lerm.notebook.result.entry","notebook_id","Result Entry")
     state = fields.Selection([('draft', 'Draft'),('published','Published')],default="draft",string="State")
 
 
     def button_confirm(self):
+        report1 = self.env['lerm.report'].create({
+                            'notebook_id': self.id,
+                        })
         self.write({'state': 'published' })
         
 

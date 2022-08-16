@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id='report_action' model='ir.actions.act_window'>
+        <field name="name">Report</field>
+        <field name="res_model">lerm.report</field>
+        <field name="view_mode">tree,form</field>
+</record>
+    <menuitem name="Report" id="report" parent="lerm_base_menu" action="report_action" />
+    <record id="report_view_form" model="ir.ui.view">
+        <field name="name">Report</field>
+        <field name="model">lerm.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group >
+                        <field name="notebook_id"/>
+                        <field name="ulr_no"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

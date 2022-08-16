@@ -5,3 +5,4 @@ from . import test_parameter
 from . import lab_technician_qualification
 from . import assignment
 from . import lab_notebook
+from . import report
