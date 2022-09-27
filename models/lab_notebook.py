@@ -5,8 +5,11 @@ from odoo import models, fields ,api
 class LabNotebook(models.Model):
     _name = "lerm.notebook"
     _rec_name = "sample"
+    _inherit=['mail.thread','mail.activity.mixin'] 
+
     sample = fields.Many2one("lerm.sample","Sample")
     result_entry = fields.One2many("lerm.notebook.result.entry","notebook_id","Result Entry")
+
     state = fields.Selection([('draft', 'Draft'),('published','Published')],default="draft",string="State")
 
 
@@ -27,6 +30,7 @@ class LabNotebookResultEntry(models.Model):
     max = fields.Integer("Max",compute='_compute_min_max')
     method = fields.Many2one("lerm.method",compute='_compute_min_max',string="Method")
     result = fields.Integer("Result")
+    remark = fields.Char("Remark")
 
     @api.depends('parameter')
     def _compute_min_max(self):
@@ -34,6 +38,7 @@ class LabNotebookResultEntry(models.Model):
             entry.min = entry.parameter.min
             entry.max = entry.parameter.max
             entry.method = entry.parameter.method.id
+            print("lerm notebook printed")
 
 
             

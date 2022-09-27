@@ -5,6 +5,7 @@ from odoo import models, fields
 class LabSample(models.Model):
     _name = "lerm.sample"
     _rec_name = "sample_no"
+    _inherit=['mail.thread','mail.activity.mixin'] 
     entry_id = fields.Many2one("lerm.entry",strings="Entry")
     sample_no = fields.Char("Sample No.")
     product = fields.Many2one("product.template",domain=[('type','=','product')],strings="Sample")

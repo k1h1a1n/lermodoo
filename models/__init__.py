@@ -6,3 +6,4 @@ from . import lab_technician_qualification
 from . import assignment
 from . import lab_notebook
 from . import report
+from . import pdfdata

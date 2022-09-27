@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="test_report_id_template">
+        <!-- <xpath expr="." position="inside">
+        <link rel="stylesheet" href="/static/src/css/sheet.css"/>
+    </xpath> -->
+        <style>
+         th td{
+                border:1px solid black;
+            }
+        </style>
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div>
+                    <table style="width:100%">
+                        <tr>
+                            <td style="vertical-align:bottom;padding-bottom:10px">
+                            <b>ULR N0 . : </b>
+                            </td>
+                            <td style="vertical-align:bottom;text-align:center">
+                                <h2 style="margin-left:20%">TEST REPORT</h2>
+                            </td>
+                            <td style="float:right">
+                                <div t-foreach="data" t-as="o">
+                                    <img style="height:150px;width:150px" t-att-src="image_data_uri(o.qr_code)" />
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <table style="width:100%;border-collapse: collapse">
+                        <tr>
+                            <th colspan="2" style="border:1px solid black;padding:5px;text-align:center;width:100%">
+                                <div>
+                                    <b>Discipline/group : </b>
+                                    <label style="font-weight:500"> Chemical - Food and  Agriculture Product </label>
+                                </div>
+                                <div>
+                                    <b>Materials or Product Tested : </b>
+                                    <label style="font-weight:500"> Tea</label>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr >
+                            <td style="border:1px solid black;padding:5px;text-align:left;width:35%">
+                                    1. Report No.: 
+                            </td>
+                            <td style="border:1px solid black;padding:5px;text-align:center;">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid black;padding:5px;text-align:left;width:35%">
+                                    2. Name and address of customer
+                            </td>
+                            <td style="border:1px solid black;padding:5px;text-align:center">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid black;padding:5px;text-align:left;width:35%">
+                                    3. Ref. of customer's letter
+                            </td>
+                            <td style="border:1px solid black;padding:5px;text-align:center">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid black;padding:5px;text-align:left;width:35%">
+                                    4. Sample description
+                            </td>
+                            <td style="border:1px solid black;padding:5px;text-align:center">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid black;padding:5px;text-align:left;width:35%">
+                                   5. Date of sample receipt/payment
+                            </td>
+                            <td style="border:1px solid black;padding:5px;text-align:center">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid black;padding:5px;text-align:left;width:35%">
+                                   6. Specification if any
+                            </td>
+                            <td style="border:1px solid black;padding:5px;text-align:center">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid black;padding:5px;text-align:left;width:35%">
+                                   7. Date of performance of test
+                            </td>
+                            <td style="border:1px solid black;padding:5px;text-align:center">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border:1px solid black;padding:5px;text-align:left">
+                                   8. Results:
+                                <table style="width:100%;border-collapse: collapse">
+                                    <tr>
+                                        <th style="border:1px solid black;padding:5px">Parameter</th>
+                                        <th style="border:1px solid black;padding:5px">Min</th>
+                                        <th style="border:1px solid black;padding:5px">Max</th>
+                                        <th style="border:1px solid black;padding:5px">Method</th>
+                                        <th style="border:1px solid black;padding:5px">Method</th>
+                                    </tr>
+                                    <tr t-foreach="docs" t-as="o">
+                                        <td style="border:1px solid black;padding:5px;text-align:center">
+                                            <span t-field="o.parameter"/>
+                                        </td>
+                                        <td style="border:1px solid black;padding:5px;text-align:center">
+                                            <span t-field="o.min"/>
+                                        </td>
+                                        <td style="border:1px solid black;padding:5px;text-align:center">
+                                            <span t-field="o.max"/>
+                                        </td>
+                                        <td style="border:1px solid black;padding:5px;text-align:center">
+                                            <span t-field="o.method"/>
+                                        </td>
+                                        <td style="border:1px solid black;padding:5px;text-align:center">
+                                            <span t-field="o.result"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="text-align:center">
+                                    <b>Remarks : </b>
+                                    <label style="font-weight:500"> The test results comply with the requirements of the FSSAI for the above mentioned parameters followwing our decision rule. </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border:1px solid black;padding:5px;text-align:left">
+                         Notes : 
+                                <ul>
+                                    <li>Samples not drawn by us.</li>
+                                    <li>Results relate to the sample(s) tested only.</li>
+                                    <li>This report will not be used for any litigation purpose.</li>
+                                    <li>The test report should not be reproduced except in full without the written approval of the director.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="border:1px solid black;padding:5px;text-align:center">
+                                END OF TEST REPORT
+
+                            </td>
+                        </tr>
+
+                    </table>
+                    <table style="width:100%;border-collapse: collapse;margin-top:80px">
+                        <tr>
+                            <td style="vertical-align:bottom;border:1px solid black;padding:5px;text-align:center;height:150px">
+                                <div>
+                                    Technical Manager
+                                </div>
+                                <div>
+                                    Authorized Signature
+                                </div>
+                            </td>
+                            <td style="vertical-align:bottom;border:1px solid black;padding:5px;text-align:center;height:150px">
+                                <div>
+                                    Technical Manager
+                                </div>
+                                <div>
+                                    Authorized Signature
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
+

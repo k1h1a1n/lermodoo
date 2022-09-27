@@ -4,6 +4,7 @@ from odoo import models, fields
 class Lab(models.Model):
     _name = "lerm.entry"
     _rec_name = "number"
+    _inherit=['mail.thread','mail.activity.mixin'] 
     number = fields.Char("Number", required=True)
     date = fields.Date(string="Date", default=fields.Date.today)
     parties = fields.Many2one("res.partner", string="Parties", required=True)

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<odoo> 
+ <!-- Add step 4 goes here --> 
+    <record id="group_lerm_admin" model="res.groups">
+        <field name="name">LERM</field>
+        <field name="category_id" ref="base.module_category_lerm"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/> 
+    </record> 
+
+</odoo> 
