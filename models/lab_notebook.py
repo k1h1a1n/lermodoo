@@ -38,7 +38,7 @@ class LabNotebookResultEntry(models.Model):
             entry.min = entry.parameter.min
             entry.max = entry.parameter.max
             entry.method = entry.parameter.method.id
-            print("lerm notebook printed")
+            print("lerm notebook printed 1")
 
 
             

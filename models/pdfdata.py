@@ -7,8 +7,10 @@ class NotebookReport(models.AbstractModel):
     @api.model
     def _get_report_values(self, docids, data=None):
         docs1 = self.env['lerm.report'].browse(docids)
-        # print(docs[0].notebook_id.result_entry , "this is dodcs")
         docs = docs1[0].notebook_id.result_entry
+        data = docs1[0].ulr_no
+        print(data , "this is dodcs")
+
         return {
               'doc_ids': docids,
               'doc_model': 'lerm.report',
