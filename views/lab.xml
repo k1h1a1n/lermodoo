@@ -10,18 +10,27 @@
         <field name="res_model">product.template</field>
         <field name="view_mode">tree,form</field>
     </record>
+    <record id='lerm_entries_kanban_action' model='ir.actions.act_window'>
+        <field name="name">Entries</field>
+        <field name="res_model">lerm.entry</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
     <menuitem name="LERM" id="lerm_base_menu"/>
+    <menuitem name="Overview" id="lerm_overview_menu" parent="lermodoo.lerm_base_menu"  sequence="0"/>
+    <menuitem name="Entries" id="lerm_entries_overview_menu" parent="lermodoo.lerm_overview_menu" action="lerm_entries_kanban_action" sequence="1"/>
+
     <menuitem name="Lab" id="lab_menu" parent="lerm_base_menu" />
     <menuitem name="Entry" id="entry_menu_id" parent="lab_menu" action="entry_action" />
     <menuitem name="Configuration" id="conf_menu" parent="lerm_base_menu" />
     <menuitem name="Product" id="product_menu" parent="conf_menu" action="product_action" />
+    
     <record id="entry_view_form" model="ir.ui.view">
         <field name="name">Entry Details</field>
         <field name="model">lerm.entry</field>
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="button_confirm" type="object" states="draft" confirm="Are you sure you want to confirm this Proforma Invoice" string="Confirm" id="draft_confirm"/>
+                    <button name="button_confirm" type="object" states="1-draft" confirm="Are you sure you want to confirm this Proforma Invoice" string="Confirm" id="draft_confirm"/>
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
@@ -84,6 +93,35 @@
                 <field name="parties"/>
             </tree> 
         </field> 
+    </record>
+
+    <record id="kanban_lerm_entries" model="ir.ui.view">
+            <field name="name">Entries Overview</field>
+            <field name="model">lerm.entry</field>
+            <field name="arch" type="xml">
+                <kanban disable_drag_drop_record="true" create="false" default_group_by="state" default_order="state">
+                    <!-- <field name="state" readonly="1" /> -->
+                    <!-- <field name="shipment_no"/> -->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <b><strong class="o_kanban_record_title"><field name="number"/></strong></b>
+                                <br/>
+                                <b>Entry Date : </b><field name="date"/>
+                                <br/>
+                                <b>Party : </b><field name="parties"/>
+                                 <br/>
+                                <div class="o_kanban_record_bottom" t-if="!selection_mode">
+                                  <div class="oe_kanban_bottom_left">
+                                    <field name="activity_ids" widget="kanban_activity"/>
+                                  </div>
+                                </div>
+                            
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
     </record>
 
 </odoo>

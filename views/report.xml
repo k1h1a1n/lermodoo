@@ -5,14 +5,27 @@
         <field name="res_model">lerm.report</field>
         <field name="view_mode">tree,form</field>
 </record>
+<record id='lerm_kanban_report_action' model='ir.actions.act_window'>
+        <field name="name">Report</field>
+        <field name="res_model">lerm.report</field>
+        <field name="view_mode">kanban,form</field>
+</record>
     <menuitem name="Report" id="lerm_reports" parent="lerm_base_menu" action="report_action" />
+    <menuitem name="Report" id="lerm_kanban_reports" parent="lermodoo.lerm_overview_menu" action="lerm_kanban_report_action" />
     <record id="report_view_form" model="ir.ui.view">
         <field name="name">Report</field>
         <field name="model">lerm.report</field>
         <field name="arch" type="xml">
+                
             <form>
+                <header>
+                    <button name="button_reject" type="object" states="1-approval" confirm="Are you sure you want to Reject this result" string="Reject" id="draft_reject_report"/>
+                    <button name="approval_confirm" type="object" states="1-approval" confirm="Are you sure you want to publish this Report" string="Published" id="approval_confirm"/>
+                    <field name="state" widget="statusbar" />
+                </header>
                 <sheet>
                     <group >
+                        <field name="entry_id"/>
                         <field name="notebook_id"/>
                         <field name="ulr_no"/>
                         <field name="qr_code" widget='image' class="oe_avatar"/>
@@ -25,5 +38,33 @@
                 </div>
             </form>
         </field>
+    </record>
+    <record id="kanban_lerm_report" model="ir.ui.view">
+            <field name="name">Report Overview</field>
+            <field name="model">lerm.report</field>
+            <field name="arch" type="xml">
+                <kanban disable_drag_drop_record="true" create="false" default_group_by="state" default_order="state">
+                    <!-- <field name="state" readonly="1" /> -->
+                    <!-- <field name="shipment_no"/> -->
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <b><strong class="o_kanban_record_title"><field name="entry_id"/></strong></b>
+                                <br/>
+                                <b>Sample : </b><field name="notebook_id"/>
+                                <br/>
+                                <b>ULR : </b><field name="ulr_no"/>
+                                 <br/>
+                                <div class="o_kanban_record_bottom" t-if="!selection_mode">
+                                  <div class="oe_kanban_bottom_left">
+                                    <field name="activity_ids" widget="kanban_activity"/>
+                                  </div>
+                                </div>
+                            
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
     </record>
 </odoo>

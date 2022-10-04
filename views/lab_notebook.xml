@@ -12,7 +12,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="button_confirm" type="object" states="draft" confirm="Are you sure you want to Publish this result" string="Confirm" id="draft_confirm_notebook"/>
+                    
+                    <button name="button_confirm" attrs="{'invisible':[('state','not in',('draft','rejected'))]}" type="object" states="draft" confirm="Are you sure you want to Publish this result" string="Send For Approval" id="draft_confirm_notebook"/>
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>

@@ -23,8 +23,12 @@ acl_lerm_notebook,lerm.notebook,model_lerm_notebook,group_lerm_admins,1,1,1,1
 acl_lerm_notebook_result_entry,lerm.notebook.result.entry,model_lerm_notebook_result_entry,group_lerm_admins,1,1,1,1
 acl_sample_assignment,sample.assignment,model_sample_assignment,group_lerm_admins,1,1,1,1
 acl_sample_assignment_technician,sample.assignment.technician,model_sample_assignment_technician,group_lerm_admins,1,1,1,1
+
 acl_lerm_notebook_technician,lerm.notebook,model_lerm_notebook,group_lerm_technician,1,1,1,1
 acl_lerm_notebook_result_entry_technician,lerm.notebook.result.entry,model_lerm_notebook_result_entry,group_lerm_technician,1,1,1,1
+
+acl_lerm_entry,lerm.entry,model_lerm_entry,group_lerm_clerk,1,1,1,1
+acl_lerm_sample,lerm.sample,model_lerm_sample,group_lerm_clerk,1,1,1,1
 
 
 

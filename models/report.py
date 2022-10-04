@@ -15,10 +15,13 @@ class Report(models.Model):
     _name = "lerm.report"
     _rec_name = "notebook_id"
     _inherit=['mail.thread','mail.activity.mixin'] 
-
+    
+    entry_id = fields.Many2one("lerm.entry","Entry")
     notebook_id = fields.Many2one("lerm.notebook","Notebook")
     ulr_no = fields.Char("ULR NO")
     qr_code = fields.Binary("QR Code", attachment=True, store=True)
+    state = fields.Selection([('1-approval','Pending for Approval'),('2-rejected','Rejected'),('3-publish','Published')],default="1-approval",string="State")
+
 
 
     @api.model
@@ -36,6 +39,14 @@ class Report(models.Model):
         new.qr_code = qr_image
         print("create")
         return new
+    
+    def button_reject(self):
+        self.notebook_id.write({'state':'rejected'})
+        self.write({'state': '2-rejected' })
+    
+    def approval_confirm(self):
+        self.notebook_id.write({'state':'published'})
+        self.write({'state': '3-publish' })
 
     # @api.onchange('default_id')
     # def generate_qr_code(self):

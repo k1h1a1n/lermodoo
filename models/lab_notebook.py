@@ -10,14 +10,15 @@ class LabNotebook(models.Model):
     sample = fields.Many2one("lerm.sample","Sample")
     result_entry = fields.One2many("lerm.notebook.result.entry","notebook_id","Result Entry")
 
-    state = fields.Selection([('draft', 'Draft'),('published','Published')],default="draft",string="State")
+    state = fields.Selection([('draft', 'Draft'),('approval','Appoval Pending'),('rejected','Rejected'),('published','Published')],default="draft",string="State")
 
 
     def button_confirm(self):
         report1 = self.env['lerm.report'].create({
                             'notebook_id': self.id,
+                            'entry_id':self.sample.entry_id.id
                         })
-        self.write({'state': 'published' })
+        self.write({'state': 'approval' })
         
 
 

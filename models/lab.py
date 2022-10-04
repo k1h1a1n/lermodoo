@@ -28,7 +28,7 @@ class Lab(models.Model):
         required=True,
     )
     
-    state = fields.Selection([('draft', 'Draft'),('confirmed','confirmed')],default="draft",string="State")
+    state = fields.Selection([('1-draft', 'Draft'),('2-confirmed','Confirmed')],default="1-draft",string="State")
 
     def button_confirm(self):
         for entry in self:
@@ -59,7 +59,7 @@ class Lab(models.Model):
         
         # self.assertEqual(move1.state, 'draft')
        
-        self.write({'state': 'confirmed' })
+        self.write({'state': '2-confirmed' })
 
 
 
