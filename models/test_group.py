@@ -6,6 +6,7 @@ class TestGroup(models.Model):
     _rec_name = 'name'
     name = fields.Char("Name")
     parameters = fields.One2many("lerm.testgroup.parameter","testgroup_id",string="Parameter")
+    
 
 
 
@@ -15,6 +16,7 @@ class TestGroupParams(models.Model):
     testgroup_id = fields.Many2one("lerm.testgroup",string="Group")
     parameters = fields.Many2one("lerm.testparameter",string="Parameter")
 
+    
 
 class Method(models.Model):
     _name = "lerm.method"

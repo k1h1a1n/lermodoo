@@ -91,4 +91,4 @@ class AcknowledgementParty(models.Model):
 
 class ProductInheritedModel(models.Model):
     _inherit = "product.template"
-    type = fields.Selection(selection=[("sample", "Sample"),("consu", "Consumable"),("service", "Service"),("product", "Storable Product")])
+    type = fields.Selection(selection=[("consu", "Consumable"),("service", "Service"),("product", "Storable Product")])

@@ -23,11 +23,7 @@
                                 <field name="parameters" />
                             </tree>
                         </field>
-                        <field name="parameters" widget="one2many_list">
-                            <tree editable="bottom">
-                                <field name="parameters" />
-                            </tree>
-                        </field>
+                        
                     </group>
                 </sheet>
             </form>
