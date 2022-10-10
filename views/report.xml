@@ -24,7 +24,7 @@
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
-                    <group >
+                    <group>
                         <field name="entry_id"/>
                         <field name="notebook_id"/>
                         <field name="ulr_no"/>
