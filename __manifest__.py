@@ -1,6 +1,7 @@
 {'name':'LERM',
  'summary': "Laboratory Enterprise Resource Management",
- 'author': "Usman Shaikhnag", 
+ 'author': "Usman Shaikhnag",
+ 'sequence': -100,
  'website': "http://www.esehat.org", 
  'category': 'Lerm', 
  'version': '13.0.1', 

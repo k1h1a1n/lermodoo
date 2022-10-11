@@ -10,8 +10,8 @@
         <field name="res_model">lerm.report</field>
         <field name="view_mode">kanban,form</field>
 </record>
-    <menuitem name="Report" id="lerm_reports" parent="lerm_base_menu" action="report_action" />
-    <menuitem name="Report" id="lerm_kanban_reports" parent="lermodoo.lerm_overview_menu" action="lerm_kanban_report_action" />
+<!--    <menuitem name="Report" id="lerm_reports" parent="lerm_base_menu" action="report_action" />-->
+<!--    <menuitem name="Report" id="lerm_kanban_reports" parent="lermodoo.lerm_overview_menu" action="lerm_kanban_report_action" />-->
     <record id="report_view_form" model="ir.ui.view">
         <field name="name">Report</field>
         <field name="model">lerm.report</field>
