@@ -29,6 +29,7 @@
                                 <field name="parameter"/>
                             </tree>
                         </field>
+                        <button name="update_parameter" type="object"  string="Update Parameters" id="update_parameters_id"/>
                     </group>
                 </sheet>
                 <div class="o_attachment_preview" options="{types: ['image', 'pdf'], 'order': 'desc'}" />

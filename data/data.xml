@@ -12,6 +12,16 @@
             <field name="usage">internal</field>
         </record>
     </data>
+
+    <data noupdate="1">
+        <record id="report_to_customers" model="mail.template">
+            <field name="name">Mail to Customer</field>
+            <!-- <field name="report_template" ref="lermodoo.test_report_id_template"/> -->
+            <field name="report_template" ref="lermodoo.report_result"/>
+            <!-- <field name="subject">Mail CHA</field> -->
+        </record>
+    </data>
+
     <!-- <data>
         <record id="lab_picking_type" model="stock.picking.type">
             <field name="name">Sample Reciept</field>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+<act_window id="wizard_reject_report" name="Reject" res_model="report.rejection.wizard" view_mode="form" target="new"/>
+
 <record id='report_action' model='ir.actions.act_window'>
         <field name="name">Report</field>
         <field name="res_model">lerm.report</field>
@@ -19,14 +22,20 @@
                 
             <form>
                 <header>
-                    <button name="button_reject" type="object" states="1-approval" confirm="Are you sure you want to Reject this result" string="Reject" id="draft_reject_report"/>
-                    <button name="approval_confirm" type="object" states="1-approval" confirm="Are you sure you want to publish this Report" string="Published" id="approval_confirm"/>
+                    <!-- <button name="%(wizard_reject_report)d" string="Open Wizard" class="oe_edit_only" type="action"></button> -->
+                    <button name="send_mail_customer" string="Send Mail"  attrs="{'invisible':[('state','in',('1-approval','2-rejected'))]}" type="object"/>
+                    <button name="%(wizard_reject_report)d" type="action"  string="Reject" id="draft_reject_report" attrs="{'invisible':['|',('publish_reject_readonly','=',True),('state', 'not in', ('1-approval'))]}"/>
+                    <button name="approval_confirm" type="object"  confirm="Are you sure you want to publish this Report" string="Published" id="approval_confirm" attrs="{'invisible':['|',('publish_reject_readonly','=',True),('state', 'not in', ('1-approval'))]}"/>
+                    <field name="publish_reject_readonly" />
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
                     <group>
                         <field name="entry_id"/>
                         <field name="notebook_id"/>
+                        <field name="technical_manager"/>
+                        <field name="year"/>
+                       
                         <field name="ulr_no"/>
                         <field name="qr_code" widget='image' class="oe_avatar"/>
                     </group>

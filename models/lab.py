@@ -1,5 +1,7 @@
-from odoo import models, fields
+from odoo import models, fields ,api
+import logging
 
+_logger = logging.getLogger(__name__)
 
 class Lab(models.Model):
     _name = "lerm.entry"
@@ -30,6 +32,13 @@ class Lab(models.Model):
     
     state = fields.Selection([('1-draft', 'Draft'),('2-confirmed','Confirmed')],default="1-draft",string="State")
 
+
+    # @api.model
+    # def create(self, values):
+    #     _logger.info(values)
+    #     new = super().create(values)
+    #     return new
+
     def button_confirm(self):
         for entry in self:
             for sample in entry.samples:
@@ -46,10 +55,15 @@ class Lab(models.Model):
                 move_line = move1.move_line_ids[0]
                 move_line.qty_done = sample.qty
                 move1._action_done()
-
+                vals = []
+                for i in sample.parameters:
+        #         _logger.info("Prod " + str(i.product_id))
+                    data = (0, 0, {'parameters':i.parameter.id})
+                    vals.append(data)
                 self.env['sample.assignment'].create({
 
                             'sample_id': sample.id,
+                            'responsible_technicians':vals
     
                         })
             
@@ -91,4 +105,11 @@ class AcknowledgementParty(models.Model):
 
 class ProductInheritedModel(models.Model):
     _inherit = "product.template"
-    type = fields.Selection(selection=[("consu", "Consumable"),("service", "Service"),("product", "Storable Product")])
+    test_groups = fields.One2many('product.template.testgroup','product_template_id')
+    # type = fields.Selection(selection=[("consu", "Consumable"),("service", "Service"),("product", "Storable Product")])
+    
+class ProductTestGroup(models.Model):
+    _name = "product.template.testgroup"
+    product_template_id = fields.Many2one('product.template',string="Product ID")
+    test_group = fields.Many2one('lerm.testgroup',string="Test Group")
+# class

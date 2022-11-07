@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="test_report_id_template">
-        <!-- <xpath expr="." position="inside">
-        <link rel="stylesheet" href="/static/src/css/sheet.css"/>
-    </xpath> -->
-        <style>
-         th td{
-                border:1px solid black;
-            }
-        </style>
+    <template id="test_report_id_template" >
+      
         <t t-call="web.html_container">
+            <!-- <link rel="stylesheet" type="text/css" href="/lermodoo/static/src/css/sheet.css"/> -->
             <t t-call="web.external_layout">
                 <div>
                     <table style="width:100%">
@@ -133,7 +127,7 @@
                                     </tr>
                                 </table>
                                 <div style="text-align:center;padding:20px">
-                                    <b>Remarks : </b>
+                                    <b class="test">Remarks : </b>
                                     <label style="font-weight:500"> The test results comply with the requirements of the FSSAI for the above mentioned parameters followwing our decision rule. </label>
                                 </div>
                             </td>
@@ -180,6 +174,11 @@
                 </div>
             </t>
         </t>
+    </template>
+    <template id='teststyle' name="mytestname" inherit_id='web.report_assets_common'>
+    <xpath expr="." position="inside">
+        <link rel="stylesheet" type="text/scss" href="/lermodoo/static/src/css/sheet.scss"/>
+    </xpath>
     </template>
 </odoo>
 

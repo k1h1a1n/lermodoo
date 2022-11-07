@@ -26,6 +26,7 @@
                     <field name="responsible_technicians" widget="one2many_list">
                         <tree editable="bottom">
                             <field name="technician"/>
+                            <field name="parameters"/>
                         </tree>
                     </field>
                 </sheet>

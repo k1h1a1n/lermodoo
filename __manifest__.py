@@ -4,7 +4,7 @@
  'website': "http://www.esehat.org", 
  'category': 'Lerm', 
  'version': '13.0.1', 
- 'depends':['base' , 'contacts' , 'product', 'stock'],
+ 'depends':['base' , 'contacts' , 'product', 'stock' , 'web' , 'website'],
  'data': [
           "views/report.xml",
           'views/lab.xml',
@@ -13,12 +13,15 @@
           'views/lab_sample.xml',
           'views/test_parameter.xml',
           'views/lab_contact.xml',
+          'views/lab_product.xml',
           'views/lab_qualification.xml',
           'views/sample_assignment.xml',
+          'views/ulr_seq.xml',
           'views/lab_notebook.xml',
           'reports/test_report_action.xml',
           'reports/test_report_templates.xml',
           'security/groups.xml',
-          'security/ir.model.access.csv'
+          'security/ir.model.access.csv',
+          'wizard/reject.xml'
           ]
 }
